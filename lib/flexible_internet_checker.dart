@@ -162,6 +162,10 @@ class FlexibleInternetChecker {
     hasConnection();
   }
 
+  void clearAddresses() {
+    _addresses = [];
+  }
+
   void _onApplicationResume() {
     if (hasListeners && refreshOnForeground) {
       fetchConnectivity();
