@@ -84,7 +84,7 @@ class FlexibleInternetChecker {
       ..onCancel = _stopMonitoring;
     this.connectivity = connectivity ?? Connectivity();
     _httpClient = client ?? http.Client();
-    this.addresses = addresses != null && addresses.isNotEmpty
+    _addresses = addresses != null && addresses.isNotEmpty
         ? addresses
         : DEFAULT_ADDRESSES;
     _lifecycleListener = AppLifecycleListener(
@@ -110,7 +110,9 @@ class FlexibleInternetChecker {
 
   late final Connectivity connectivity;
 
-  late final List<AddressCheckOption> addresses;
+  late List<AddressCheckOption> _addresses;
+
+  List<AddressCheckOption> get addresses => _addresses;
 
   final Duration timeout;
 
@@ -153,6 +155,11 @@ class FlexibleInternetChecker {
       interval: interval,
       action: hasConnection,
     );
+  }
+
+  void changeAddresses(List<AddressCheckOption> addresses) {
+    _addresses = addresses;
+    hasConnection();
   }
 
   void _onApplicationResume() {
