@@ -14,7 +14,7 @@ dependencies:
 
   flutter_toolkit:
     git:
-      url: https://github.com/oldHarvester/flutter_toolkit.git
+      url: https://github.com/radiants-uz/flutter_toolkit.git
   connectivity_plus: ">=7.0.0 <8.0.0"
   equatable: ">=2.0.0 <3.0.0"
   http: ">=1.0.0 <2.0.0"
